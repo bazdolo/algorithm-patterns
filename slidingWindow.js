@@ -28,7 +28,15 @@ maxSubArrayEfficient = (arr, num) => {
 		maxSum += arr[i];
 	}
 
-	for (let i = num; i < array.length; i++) {}
+	tempSum = maxSum;
+
+	for (let i = num; i < arr.length; i++) {
+		tempSum = tempSum - arr[i - num] + arr[i];
+		if (tempSum > maxSum) {
+			maxSum = tempSum;
+		}
+	}
+	return maxSum;
 };
 
-console.log(maxSubArrayEfficient([ 5, 3, 8, 9, 1, 6 ], 3));
+console.log(maxSubArrayEfficient([ 5, 3, 8, 9, 1, 100 ], 3));
