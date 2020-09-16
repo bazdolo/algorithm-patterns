@@ -52,11 +52,28 @@ const validAnagram = (str1, str2) => {
 	return true;
 };
 
-console.log(validAnagram('aaz', 'zza'));
+// console.log(validAnagram('aaz', 'zza'));
 
-// const iterable = [ 3, 5, 7 ];
-// iterable.foo = 'hello';
-// iterable.hello = function() {
-// 	console.log('hello');
-// };
-// console.log(iterable);
+const sameFrequency = (num1, num2) => {
+	if (num1.toString().length !== num2.toString().length) {
+		return false;
+	}
+	let numObj1 = {};
+
+	for (const key of num1.toString()) {
+		numObj1[key] = numObj1[key] + 1 || 1;
+	}
+
+	for (const key of num2.toString()) {
+		if (!numObj1[key]) {
+			console.log('called');
+			return false;
+		} else {
+			numObj1[key] = numObj1[key] - 1;
+		}
+		console.log(numObj1);
+	}
+	return true;
+};
+
+console.log(sameFrequency(22, 2222));
